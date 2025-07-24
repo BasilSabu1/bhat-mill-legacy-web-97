@@ -2,7 +2,7 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
-import { ProductCategories } from "@/components/ProductCategories";
+import ProductCategories from '../components/ProductCategories';
 import { Services } from "@/components/Services";
 import { FeaturedBrands } from "@/components/FeaturedBrands";
 import { Testimonials } from "@/components/Testimonials";

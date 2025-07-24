@@ -1,4 +1,3 @@
-
 import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,17 +11,17 @@ export const Contact = () => {
       title: 'Our Location',
       details: [
         'Krishna Bhat Mill Stores',
-        'M.G. Road, Fort Kochi',
-        'Kochi - 682001, Kerala, India'
+        'Cloth Bazar Rd, Cloth Bazar, Shenoys, ',
+        'Kochi, Ernakulam, Kerala 682031'
       ]
     },
     {
       icon: Phone,
       title: 'Phone Numbers',
       details: [
-        'Main: +91 484 2345678',
-        'Sales: +91 484 2345679', 
-        'Emergency: +91 9876543210'
+        'Main: +91 98471 80012',
+        'Sales: +91 98471 80012', 
+        'Emergency: +91 98471 80012'
       ]
     },
     {
@@ -46,42 +45,42 @@ export const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-16 lg:py-24 bg-white">
+    <section id="contact" className="py-8 md:py-16 lg:py-24 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-montserrat font-bold text-3xl lg:text-4xl text-navy mb-4">
+        <div className="text-center mb-8 md:mb-12 lg:mb-16">
+          <h2 className="font-montserrat font-bold text-2xl md:text-3xl lg:text-4xl text-navy mb-4">
             Contact Us
           </h2>
-          <p className="font-open-sans text-lg text-industrial max-w-2xl mx-auto">
+          <p className="font-open-sans text-base md:text-lg text-industrial max-w-2xl mx-auto">
             Get in touch with our team for product inquiries, technical support, 
             or emergency supply requirements.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
           {/* Contact Information */}
-          <div className="space-y-6">
-            <h3 className="font-montserrat font-semibold text-2xl text-navy mb-8">
+          <div className="space-y-4 md:space-y-6">
+            <h3 className="font-montserrat font-semibold text-xl md:text-2xl text-navy mb-6 md:mb-8">
               Get in Touch
             </h3>
             
             {contactInfo.map((info, index) => {
               const IconComponent = info.icon;
               return (
-                <Card key={index} className="border-0 shadow-lg">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="bg-navy text-white p-3 rounded-full flex-shrink-0">
-                        <IconComponent className="h-5 w-5" />
+                <Card key={index} className="border-0 shadow-lg w-full">
+                  <CardContent className="p-4 md:p-6">
+                    <div className="flex items-start space-x-3 md:space-x-4">
+                      <div className="bg-navy text-white p-2 md:p-3 rounded-full flex-shrink-0">
+                        <IconComponent className="h-4 w-4 md:h-5 md:w-5" />
                       </div>
                       <div>
-                        <h4 className="font-montserrat font-semibold text-lg text-navy mb-2">
+                        <h4 className="font-montserrat font-semibold text-base md:text-lg text-navy mb-2">
                           {info.title}
                         </h4>
                         <div className="space-y-1">
                           {info.details.map((detail, detailIndex) => (
-                            <p key={detailIndex} className="font-open-sans text-industrial text-sm">
+                            <p key={detailIndex} className="font-open-sans text-industrial text-xs md:text-sm">
                               {detail}
                             </p>
                           ))}
@@ -94,18 +93,18 @@ export const Contact = () => {
             })}
 
             {/* Quick Actions */}
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h4 className="font-montserrat font-semibold text-lg text-navy mb-4">
+            <div className="bg-gray-50 rounded-lg p-4 md:p-6">
+              <h4 className="font-montserrat font-semibold text-base md:text-lg text-navy mb-4">
                 Quick Actions
               </h4>
               <div className="space-y-3">
-                <Button className="w-full justify-start bg-green-600 hover:bg-green-700 text-white">
+                <Button className="w-full justify-start bg-green-600 hover:bg-green-700 text-white text-sm md:text-base">
                   <MessageCircle className="mr-2 h-4 w-4" />
-                  WhatsApp: +91 9876543210
+                  WhatsApp: +91 98471 80012
                 </Button>
-                <Button variant="outline" className="w-full justify-start border-navy text-navy hover:bg-navy hover:text-white">
+                <Button variant="outline" className="w-full justify-start border-navy text-navy hover:bg-navy hover:text-white text-sm md:text-base">
                   <Phone className="mr-2 h-4 w-4" />
-                  Call Now: +91 484 2345678
+                  Call Now:+91 98471 80012
                 </Button>
               </div>
             </div>
@@ -113,16 +112,16 @@ export const Contact = () => {
 
           {/* Contact Form */}
           <div>
-            <Card className="border-0 shadow-lg">
-              <CardContent className="p-8">
-                <h3 className="font-montserrat font-semibold text-2xl text-navy mb-6">
+            <Card className="border-0 shadow-lg w-full">
+              <CardContent className="p-6 md:p-8">
+                <h3 className="font-montserrat font-semibold text-xl md:text-2xl text-navy mb-4 md:mb-6">
                   Send us a Message
                 </h3>
                 
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
+                <form className="space-y-4 md:space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="font-open-sans text-sm font-medium text-industrial block mb-2">
+                      <label className="font-open-sans text-xs md:text-sm font-medium text-industrial block mb-2">
                         Full Name *
                       </label>
                       <Input 
@@ -131,7 +130,7 @@ export const Contact = () => {
                       />
                     </div>
                     <div>
-                      <label className="font-open-sans text-sm font-medium text-industrial block mb-2">
+                      <label className="font-open-sans text-xs md:text-sm font-medium text-industrial block mb-2">
                         Company Name
                       </label>
                       <Input 
@@ -141,9 +140,9 @@ export const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="font-open-sans text-sm font-medium text-industrial block mb-2">
+                      <label className="font-open-sans text-xs md:text-sm font-medium text-industrial block mb-2">
                         Email Address *
                       </label>
                       <Input 
@@ -153,7 +152,7 @@ export const Contact = () => {
                       />
                     </div>
                     <div>
-                      <label className="font-open-sans text-sm font-medium text-industrial block mb-2">
+                      <label className="font-open-sans text-xs md:text-sm font-medium text-industrial block mb-2">
                         Phone Number *
                       </label>
                       <Input 
@@ -165,7 +164,7 @@ export const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="font-open-sans text-sm font-medium text-industrial block mb-2">
+                    <label className="font-open-sans text-xs md:text-sm font-medium text-industrial block mb-2">
                       Subject *
                     </label>
                     <Input 
@@ -175,7 +174,7 @@ export const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="font-open-sans text-sm font-medium text-industrial block mb-2">
+                    <label className="font-open-sans text-xs md:text-sm font-medium text-industrial block mb-2">
                       Message *
                     </label>
                     <Textarea 
@@ -187,7 +186,7 @@ export const Contact = () => {
 
                   <Button 
                     type="submit" 
-                    className="w-full bg-yellow hover:bg-yellow/90 text-navy font-montserrat font-semibold text-lg py-3 h-auto"
+                    className="w-full bg-yellow hover:bg-yellow/90 text-navy font-montserrat font-semibold text-base md:text-lg py-3 h-auto"
                   >
                     Send Message
                   </Button>
@@ -202,23 +201,33 @@ export const Contact = () => {
         </div>
 
         {/* Map Section */}
-        <div className="mt-16">
-          <h3 className="font-montserrat font-semibold text-2xl text-navy mb-6 text-center">
+        <div className="mt-8 md:mt-12 lg:mt-16">
+          <h3 className="font-montserrat font-semibold text-xl md:text-2xl text-navy mb-6 text-center">
             Find Us on Map
           </h3>
-          <div className="bg-gray-100 rounded-lg h-96 flex items-center justify-center">
-            <div className="text-center">
-              <MapPin className="h-16 w-16 text-navy mx-auto mb-4" />
-              <h4 className="font-montserrat font-semibold text-navy text-lg mb-2">
-                Krishna Bhat Mill Stores
-              </h4>
-              <p className="font-open-sans text-industrial">
-                M.G. Road, Fort Kochi, Kerala 682001
-              </p>
-              <Button variant="outline" className="mt-4 border-navy text-navy hover:bg-navy hover:text-white">
-                Get Directions
+          <div className="rounded-lg overflow-hidden">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125742.57732679874!2d76.12541859726562!3d9.979177599999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d5151a2bc33%3A0x5cbc5265ebeb475b!2sA%20Krishna%20Bhat%20-%20Tools%20and%20Hardware%20Dealer!5e0!3m2!1sen!2sin!4v1753265848501!5m2!1sen!2sin" 
+              width="100%" 
+              height="300" 
+              style={{ border: 0 }}
+              allowFullScreen 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Krishna Bhat Mill Stores Location"
+              className="rounded-lg sm:h-[450px]"
+            ></iframe>
+          </div>
+          <div className="text-center mt-6">
+            <a 
+              href="https://www.google.com/maps/place/A+Krishna+Bhat+-+Tools+and+Hardware+Dealer/@9.9791776,76.1254186,12z/data=!4m6!3m5!1s0x3b080d5151a2bc33:0x5cbc5265ebeb475b!8m2!3d9.9791776!4d76.1954586!16s%2Fg%2F11h0n1v3t1?entry=ttu" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white text-sm md:text-base">
+                Open in Google Maps
               </Button>
-            </div>
+            </a>
           </div>
         </div>
       </div>

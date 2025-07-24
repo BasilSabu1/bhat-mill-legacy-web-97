@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -12,11 +11,18 @@ import {
   Shield,
   ShoppingCart,
   Plus,
-  Minus
+  Minus,
+  X,
+  Star,
+  Truck,
+  Award,
+  CheckCircle
 } from 'lucide-react';
 
-export const ProductCategories = () => {
+export default function ProductCategories() {
   const [enquiryCart, setEnquiryCart] = useState<{[key: string]: number}>({});
+  const [selectedCategory, setSelectedCategory] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const categories = [
     {
@@ -25,7 +31,17 @@ export const ProductCategories = () => {
       icon: Settings,
       description: 'Bolts, nuts, screws, washers, and specialty fasteners',
       products: ['Hex Bolts', 'Socket Screws', 'Washers', 'Threaded Rods'],
-      image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=400&h=300&fit=crop',
+      fullDescription: 'Comprehensive range of high-quality fasteners and hardware components designed for industrial applications. Our fasteners meet international standards including ISO, DIN, and ANSI specifications.',
+      detailedProducts: [
+        { name: 'Hex Bolts', specs: 'M6-M36, Grade 8.8-12.9, Zinc Plated', price: 'From ₹2.50/piece' },
+        { name: 'Socket Head Cap Screws', specs: 'M3-M20, Alloy Steel, Black Oxide', price: 'From ₹3.20/piece' },
+        { name: 'Spring Washers', specs: 'M4-M24, Stainless Steel 316', price: 'From ₹0.80/piece' },
+        { name: 'Threaded Rods', specs: '6mm-25mm dia, A4 Grade, 1m length', price: 'From ₹45.00/meter' }
+      ],
+      certifications: ['ISO 9001:2015', 'ISO 14001', 'OHSAS 18001'],
+      brands: ['Unbrako', 'Sundram', 'Precision', 'Hi-Tech'],
+      applications: ['Automotive', 'Construction', 'Machinery', 'Marine']
     },
     {
       id: 'valves',
@@ -33,7 +49,17 @@ export const ProductCategories = () => {
       icon: Cog,
       description: 'Industrial valves, pipe fittings, and flow control',
       products: ['Ball Valves', 'Gate Valves', 'Pipe Fittings', 'Flanges'],
-      image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=400&h=300&fit=crop',
+      fullDescription: 'Premium quality valves and fittings for fluid control systems. Suitable for water, oil, gas, and chemical applications with pressure ratings up to 40 bar.',
+      detailedProducts: [
+        { name: 'Ball Valves', specs: '1/2" to 6", Brass/SS316, Full Port', price: 'From ₹285.00/piece' },
+        { name: 'Gate Valves', specs: '1/2" to 8", Cast Iron, Rising Stem', price: 'From ₹450.00/piece' },
+        { name: 'Pipe Fittings', specs: 'NPT/BSP, Forged Steel, 3000 PSI', price: 'From ₹125.00/piece' },
+        { name: 'Flanges', specs: 'ANSI B16.5, RF/FF, A105 Carbon Steel', price: 'From ₹320.00/piece' }
+      ],
+      certifications: ['API 6D', 'CE Marking', 'IBR Approved'],
+      brands: ['L&T Valves', 'Forbes Marshall', 'Audco', 'Flowserve'],
+      applications: ['Process Industries', 'Power Plants', 'Oil & Gas', 'Water Treatment']
     },
     {
       id: 'tools',
@@ -41,7 +67,17 @@ export const ProductCategories = () => {
       icon: Hammer,
       description: 'Professional grade hand tools and equipment',
       products: ['Wrenches', 'Screwdrivers', 'Pliers', 'Measuring Tools'],
-      image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&h=300&fit=crop',
+      fullDescription: 'Professional grade hand tools engineered for durability and precision. Ergonomically designed for comfort during extended use with lifetime warranty on select products.',
+      detailedProducts: [
+        { name: 'Combination Wrenches', specs: '8mm-32mm, Chrome Vanadium, 12-Point', price: 'From ₹125.00/piece' },
+        { name: 'Screwdriver Sets', specs: 'Phillips/Slotted, Magnetic Tips, 6-piece', price: 'From ₹450.00/set' },
+        { name: 'Long Nose Pliers', specs: '6"-8", Drop Forged, Insulated Handle', price: 'From ₹185.00/piece' },
+        { name: 'Digital Calipers', specs: '0-150mm, ±0.02mm Accuracy, IP54', price: 'From ₹850.00/piece' }
+      ],
+      certifications: ['IS 3558', 'DIN Standards', 'ISO Compliant'],
+      brands: ['Stanley', 'Taparia', 'Jhalani', 'Kennedy'],
+      applications: ['Maintenance', 'Assembly', 'Fabrication', 'Automotive Service']
     },
     {
       id: 'power-tools',
@@ -49,7 +85,17 @@ export const ProductCategories = () => {
       icon: Zap,
       description: 'Electric and pneumatic power tools',
       products: ['Drills', 'Grinders', 'Saws', 'Impact Wrenches'],
-      image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&h=300&fit=crop',
+      fullDescription: 'High-performance power tools for industrial and professional use. Features brushless motors, advanced battery technology, and precision engineering for maximum productivity.',
+      detailedProducts: [
+        { name: 'Cordless Drill Driver', specs: '18V Li-ion, 13mm Chuck, 65Nm Torque', price: 'From ₹4,500.00/piece' },
+        { name: 'Angle Grinders', specs: '4.5"-9", 850W-2400W, Variable Speed', price: 'From ₹1,250.00/piece' },
+        { name: 'Circular Saws', specs: '7.25", 1800W, Laser Guide, 65mm Depth', price: 'From ₹6,500.00/piece' },
+        { name: 'Impact Wrenches', specs: '1/2" Drive, 400Nm Torque, Pneumatic', price: 'From ₹8,500.00/piece' }
+      ],
+      certifications: ['CE Certified', 'ISI Mark', 'UL Listed'],
+      brands: ['Bosch', 'Makita', 'DeWalt', 'Hilti'],
+      applications: ['Construction', 'Manufacturing', 'Automotive', 'Maintenance']
     },
     {
       id: 'safety',
@@ -57,7 +103,17 @@ export const ProductCategories = () => {
       icon: Shield,
       description: 'Personal protective equipment and safety gear',
       products: ['Hard Hats', 'Safety Glasses', 'Gloves', 'Harnesses'],
-      image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&h=300&fit=crop',
+      fullDescription: 'Comprehensive safety equipment designed to protect workers in hazardous environments. All products meet or exceed international safety standards.',
+      detailedProducts: [
+        { name: 'Safety Helmets', specs: 'Class G, HDPE Shell, 4-Point Suspension', price: 'From ₹285.00/piece' },
+        { name: 'Safety Glasses', specs: 'Polycarbonate Lens, UV Protection, Anti-Fog', price: 'From ₹125.00/piece' },
+        { name: 'Cut Resistant Gloves', specs: 'Level 5 Cut, Nitrile Palm, Size 7-11', price: 'From ₹185.00/pair' },
+        { name: 'Fall Arrest Harness', specs: 'Full Body, 3 D-Rings, 140kg Capacity', price: 'From ₹1,850.00/piece' }
+      ],
+      certifications: ['ANSI Z89.1', 'EN 397', 'OSHA Compliant'],
+      brands: ['3M', 'Honeywell', 'MSA', 'Udyogi'],
+      applications: ['Construction', 'Manufacturing', 'Mining', 'Chemical Industries']
     },
     {
       id: 'maintenance',
@@ -65,7 +121,17 @@ export const ProductCategories = () => {
       icon: Wrench,
       description: 'Lubricants, cleaning supplies, and maintenance items',
       products: ['Lubricants', 'Cleaners', 'Adhesives', 'Gaskets'],
-      image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=400&h=300&fit=crop',
+      fullDescription: 'Essential maintenance supplies for equipment upkeep and facility management. High-performance products designed for industrial environments.',
+      detailedProducts: [
+        { name: 'Industrial Lubricants', specs: 'ISO VG 32-680, Multi-grade, 20L Pack', price: 'From ₹1,200.00/pack' },
+        { name: 'Degreasers', specs: 'Heavy Duty, Biodegradable, 5L Container', price: 'From ₹450.00/container' },
+        { name: 'Structural Adhesives', specs: '2-Part Epoxy, 24hr Cure, 25MPa Bond', price: 'From ₹285.00/tube' },
+        { name: 'Gasket Sheets', specs: 'NBR/EPDM, 1-10mm Thick, 1m x 1m', price: 'From ₹85.00/sq.ft' }
+      ],
+      certifications: ['REACH Compliant', 'RoHS Certified', 'ISO 21469'],
+      brands: ['Castrol', 'Shell', 'Loctite', 'Fevicol'],
+      applications: ['Equipment Maintenance', 'Facility Management', 'Production Support', 'MRO']
     }
   ];
 
@@ -87,29 +153,39 @@ export const ProductCategories = () => {
     return Object.values(enquiryCart).reduce((sum, count) => sum + count, 0);
   };
 
+  const openModal = (category: any) => {
+    setSelectedCategory(category);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCategory(null);
+  };
+
   return (
     <section id="products" className="py-16 lg:py-24 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="font-montserrat font-bold text-3xl lg:text-4xl text-navy mb-4">
+          <h2 className="font-montserrat font-bold text-3xl lg:text-4xl text-slate-800 mb-4">
             Product Categories
           </h2>
-          <p className="font-open-sans text-lg text-industrial max-w-2xl mx-auto mb-8">
+          <p className="font-open-sans text-lg text-slate-600 max-w-2xl mx-auto mb-8">
             Comprehensive range of industrial supplies from trusted brands. 
             Add items to your enquiry cart for bulk quotations.
           </p>
           
           {/* Enquiry Cart Summary */}
           {getTotalItems() > 0 && (
-            <div className="inline-flex items-center bg-yellow/10 border border-yellow/20 rounded-lg px-4 py-2">
-              <ShoppingCart className="h-5 w-5 text-yellow mr-2" />
-              <span className="font-open-sans text-navy">
+            <div className="inline-flex items-center bg-amber-50 border border-amber-200 rounded-lg px-4 py-2">
+              <ShoppingCart className="h-5 w-5 text-amber-600 mr-2" />
+              <span className="font-open-sans text-slate-800">
                 {getTotalItems()} categories in enquiry cart
               </span>
               <Button 
                 size="sm" 
-                className="ml-4 bg-yellow hover:bg-yellow/90 text-navy"
+                className="ml-4 bg-amber-500 hover:bg-amber-600 text-white"
               >
                 Submit Enquiry
               </Button>
@@ -128,11 +204,11 @@ export const ProductCategories = () => {
                 <CardContent className="p-0">
                   {/* Category Image */}
                   <div className="relative h-48 bg-gray-100 rounded-t-lg overflow-hidden">
-                    <div className="absolute inset-0 bg-navy/80 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-slate-800/80 flex items-center justify-center">
                       <IconComponent className="h-16 w-16 text-white" />
                     </div>
                     <div className="absolute top-4 right-4">
-                      <Badge variant="secondary" className="bg-yellow text-navy font-medium">
+                      <Badge variant="secondary" className="bg-amber-400 text-slate-800 font-medium">
                         Industrial Grade
                       </Badge>
                     </div>
@@ -140,10 +216,10 @@ export const ProductCategories = () => {
 
                   {/* Category Info */}
                   <div className="p-6">
-                    <h3 className="font-montserrat font-semibold text-xl text-navy mb-2 group-hover:text-yellow transition-colors">
+                    <h3 className="font-montserrat font-semibold text-xl text-slate-800 mb-2 group-hover:text-amber-600 transition-colors">
                       {category.name}
                     </h3>
-                    <p className="font-open-sans text-industrial text-sm mb-4 leading-relaxed">
+                    <p className="font-open-sans text-slate-600 text-sm mb-4 leading-relaxed">
                       {category.description}
                     </p>
 
@@ -168,13 +244,13 @@ export const ProductCategories = () => {
                           >
                             <Minus className="h-4 w-4" />
                           </Button>
-                          <span className="font-montserrat font-medium text-navy">
+                          <span className="font-montserrat font-medium text-slate-800">
                             {itemCount}
                           </span>
                           <Button
                             size="sm"
                             onClick={() => addToEnquiry(category.id)}
-                            className="h-8 w-8 p-0 bg-yellow hover:bg-yellow/90 text-navy"
+                            className="h-8 w-8 p-0 bg-amber-500 hover:bg-amber-600 text-white"
                           >
                             <Plus className="h-4 w-4" />
                           </Button>
@@ -182,13 +258,17 @@ export const ProductCategories = () => {
                       ) : (
                         <Button
                           onClick={() => addToEnquiry(category.id)}
-                          className="bg-navy hover:bg-navy/90 text-white"
+                          className="bg-slate-800 hover:bg-slate-700 text-white"
                         >
                           Add to Enquiry
                         </Button>
                       )}
                       
-                      <Button variant="ghost" className="text-industrial hover:text-navy">
+                      <Button 
+                        variant="ghost" 
+                        className="text-slate-600 hover:text-slate-800"
+                        onClick={() => openModal(category)}
+                      >
                         View Details
                       </Button>
                     </div>
@@ -201,14 +281,132 @@ export const ProductCategories = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <p className="font-open-sans text-industrial mb-6">
+          <p className="font-open-sans text-slate-600 mb-6">
             Can't find what you're looking for? We stock over 10,000+ products.
           </p>
-          <Button size="lg" variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white">
+          <Button size="lg" variant="outline" className="border-slate-800 text-slate-800 hover:bg-slate-800 hover:text-white">
             View Complete Catalog
           </Button>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && selectedCategory && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            {/* Modal Header */}
+            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <div className="bg-slate-800 p-3 rounded-lg">
+                  <selectedCategory.icon className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-slate-800">{selectedCategory.name}</h2>
+                  <p className="text-slate-600">Complete Product Details</p>
+                </div>
+              </div>
+              <Button variant="ghost" size="sm" onClick={closeModal}>
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 space-y-8">
+              {/* Description */}
+              <div>
+                <h3 className="text-lg font-semibold text-slate-800 mb-3">Overview</h3>
+                <p className="text-slate-600 leading-relaxed">{selectedCategory.fullDescription}</p>
+              </div>
+
+              {/* Detailed Products */}
+              <div>
+                <h3 className="text-lg font-semibold text-slate-800 mb-4">Product Specifications</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {selectedCategory.detailedProducts.map((product: any, index: number) => (
+                    <div key={index} className="border border-gray-200 rounded-lg p-4">
+                      <div className="flex items-start justify-between mb-2">
+                        <h4 className="font-medium text-slate-800">{product.name}</h4>
+                        <Badge className="bg-green-100 text-green-800">In Stock</Badge>
+                      </div>
+                      <p className="text-sm text-slate-600 mb-3">{product.specs}</p>
+                      <div className="flex items-center justify-between">
+                        <span className="font-semibold text-slate-800">{product.price}</span>
+                        <Button size="sm" variant="outline">Add to Enquiry</Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Features Grid */}
+              <div className="grid md:grid-cols-3 gap-6">
+                {/* Certifications */}
+                <div>
+                  <h4 className="font-semibold text-slate-800 mb-3 flex items-center">
+                    <Award className="h-5 w-5 mr-2 text-amber-500" />
+                    Certifications
+                  </h4>
+                  <ul className="space-y-2">
+                    {selectedCategory.certifications.map((cert: string, index: number) => (
+                      <li key={index} className="flex items-center text-sm text-slate-600">
+                        <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
+                        {cert}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Brands */}
+                <div>
+                  <h4 className="font-semibold text-slate-800 mb-3 flex items-center">
+                    <Star className="h-5 w-5 mr-2 text-amber-500" />
+                    Trusted Brands
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedCategory.brands.map((brand: string, index: number) => (
+                      <Badge key={index} variant="outline" className="text-xs">
+                        {brand}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Applications */}
+                <div>
+                  <h4 className="font-semibold text-slate-800 mb-3 flex items-center">
+                    <Truck className="h-5 w-5 mr-2 text-amber-500" />
+                    Applications
+                  </h4>
+                  <ul className="space-y-2">
+                    {selectedCategory.applications.map((app: string, index: number) => (
+                      <li key={index} className="flex items-center text-sm text-slate-600">
+                        <CheckCircle className="h-4 w-4 mr-2 text-blue-500" />
+                        {app}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-200">
+                <Button 
+                  className="flex-1 bg-slate-800 hover:bg-slate-700 text-white"
+                  onClick={() => addToEnquiry(selectedCategory.id)}
+                >
+                  Add Category to Enquiry
+                </Button>
+                <Button variant="outline" className="flex-1">
+                  Request Detailed Catalog
+                </Button>
+                <Button variant="ghost" onClick={closeModal}>
+                  Close
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
-};
+}

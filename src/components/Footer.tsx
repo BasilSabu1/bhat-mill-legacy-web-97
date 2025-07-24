@@ -57,13 +57,13 @@ export const Footer = () => {
               <div className="flex items-center space-x-3">
                 <MapPin className="h-4 w-4 text-yellow flex-shrink-0" />
                 <span className="font-open-sans text-sm text-white/90">
-                  M.G. Road, Fort Kochi, Kerala 682001
+                 Cloth Bazar Rd, Cloth Bazar, Shenoys, Kochi, Ernakulam, Kerala 682031
                 </span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-yellow flex-shrink-0" />
                 <span className="font-open-sans text-sm text-white/90">
-                  +91 484 2345678
+                  +91  98471 80012
                 </span>
               </div>
               <div className="flex items-center space-x-3">

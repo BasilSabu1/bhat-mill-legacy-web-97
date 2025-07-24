@@ -1,6 +1,63 @@
-
 import { Star, Quote } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { useEffect, useRef, useState } from 'react';
+
+// Reusable AnimatedCounter component (can be moved to a separate file if used elsewhere)
+const AnimatedCounter = ({ target, duration = 2000, prefix = '', suffix = '' }: { 
+  target: number; 
+  duration?: number;
+  prefix?: string;
+  suffix?: string;
+}) => {
+  const [count, setCount] = useState(0);
+  const hasAnimated = useRef(false);
+  const counterRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          
+          const startTime = performance.now();
+          
+          const updateCount = (currentTime: number) => {
+            const elapsedTime = currentTime - startTime;
+            const progress = Math.min(elapsedTime / duration, 1);
+            const currentCount = Math.floor(progress * target);
+            
+            setCount(currentCount);
+            
+            if (progress < 1) {
+              requestAnimationFrame(updateCount);
+            } else {
+              setCount(target); // Ensure we end exactly at the target
+            }
+          };
+          
+          requestAnimationFrame(updateCount);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (counterRef.current) {
+      observer.observe(counterRef.current);
+    }
+
+    return () => {
+      if (counterRef.current) {
+        observer.unobserve(counterRef.current);
+      }
+    };
+  }, [target, duration]);
+
+  return (
+    <div ref={counterRef}>
+      {prefix}{count.toLocaleString()}{suffix}
+    </div>
+  );
+};
 
 export const Testimonials = () => {
   const testimonials = [
@@ -134,19 +191,27 @@ export const Testimonials = () => {
           
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="font-montserrat font-bold text-3xl text-yellow mb-2">5,000+</div>
+              <div className="font-montserrat font-bold text-3xl text-yellow mb-2">
+                <AnimatedCounter target={5000} duration={1500} suffix="+" />
+              </div>
               <div className="font-open-sans text-white/80">Happy Clients</div>
             </div>
             <div>
-              <div className="font-montserrat font-bold text-3xl text-yellow mb-2">98%</div>
+              <div className="font-montserrat font-bold text-3xl text-yellow mb-2">
+                <AnimatedCounter target={98} duration={1200} suffix="%" />
+              </div>
               <div className="font-open-sans text-white/80">Client Retention</div>
             </div>
             <div>
-              <div className="font-montserrat font-bold text-3xl text-yellow mb-2">50+</div>
+              <div className="font-montserrat font-bold text-3xl text-yellow mb-2">
+                <AnimatedCounter target={50} duration={1000} suffix="+" />
+              </div>
               <div className="font-open-sans text-white/80">Industry Sectors</div>
             </div>
             <div>
-              <div className="font-montserrat font-bold text-3xl text-yellow mb-2">24/7</div>
+              <div className="font-montserrat font-bold text-3xl text-yellow mb-2">
+                24/7
+              </div>
               <div className="font-open-sans text-white/80">Support Available</div>
             </div>
           </div>
