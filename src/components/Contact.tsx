@@ -207,7 +207,7 @@ export const Contact = () => {
           </h3>
           <div className="rounded-lg overflow-hidden">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125742.57732679874!2d76.12541859726562!3d9.979177599999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d5151a2bc33%3A0x5cbc5265ebeb475b!2sA%20Krishna%20Bhat%20-%20Tools%20and%20Hardware%20Dealer!5e0!3m2!1sen!2sin!4v1753265848501!5m2!1sen!2sin" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.453908885453!2d76.27519597479329!3d9.979312890125051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d005a3f3941%3A0xc96650c9bfc5878a!2sKrishna%20Bhat%20Mill%20Stores!5e0!3m2!1sen!2sin!4v1753439367219!5m2!1sen!2sin" 
               width="100%" 
               height="300" 
               style={{ border: 0 }}
@@ -220,7 +220,7 @@ export const Contact = () => {
           </div>
           <div className="text-center mt-6">
             <a 
-              href="https://www.google.com/maps/place/A+Krishna+Bhat+-+Tools+and+Hardware+Dealer/@9.9791776,76.1254186,12z/data=!4m6!3m5!1s0x3b080d5151a2bc33:0x5cbc5265ebeb475b!8m2!3d9.9791776!4d76.1954586!16s%2Fg%2F11h0n1v3t1?entry=ttu" 
+              href="https://www.google.com/maps/place/Krishna+Bhat+Mill+Stores/@9.9793129,76.2751960,17z/data=!3m1!4b1!4m6!3m5!1s0x3b080d005a3f3941:0xc96650c9bfc5878a!8m2!3d9.9793129!4d76.2777709!16s%2Fg%2F11dy8bs7ql?entry=ttu" 
               target="_blank" 
               rel="noopener noreferrer"
             >
