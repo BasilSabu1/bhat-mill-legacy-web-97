@@ -110,7 +110,8 @@ export const Contact = () => {
               </div>
             </div>
           </div>
-
+        
+         
           {/* Contact Form */}
           <div>
             <Card className="border-0 shadow-lg w-full">
