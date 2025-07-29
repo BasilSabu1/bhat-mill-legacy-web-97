@@ -43,17 +43,17 @@ export const Services = () => {
         'Flexible payment terms',
       ],
     },
-    {
-      icon: Wrench,
-      title: 'Installation Support',
-      description:
-        'On-site installation and maintenance support for complex industrial equipment.',
-      features: [
-        'On-site installation',
-        'Maintenance contracts',
-        'Equipment training',
-      ],
-    },
+    // {
+    //   icon: Wrench,
+    //   title: 'Installation Support',
+    //   description:
+    //     'On-site installation and maintenance support for complex industrial equipment.',
+    //   features: [
+    //     'On-site installation',
+    //     'Maintenance contracts',
+    //     'Equipment training',
+    //   ],
+    // },
     // {
     //   icon: Clock,
     //   title: '24/7 Emergency',
@@ -63,12 +63,11 @@ export const Services = () => {
     {
       icon: MapPin,
       title: 'Pan-Kerala Coverage',
-      description:
-        'Serving industries across Kerala with strategic distribution network.',
+      description: 'Serving industries across Kerala.',
       features: [
-        'Multiple locations',
-        'Regional representatives',
-        'Local inventory hubs',
+        // 'Multiple locations',
+        // 'Regional representatives',
+        // 'Local inventory hubs',
       ],
     },
   ];
@@ -88,7 +87,7 @@ export const Services = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => {
             const IconComponent = service.icon;
 
