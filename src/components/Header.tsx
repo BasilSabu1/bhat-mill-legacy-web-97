@@ -81,11 +81,9 @@ export const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <a href="/" className="flex items-center space-x-3">
-            <div>
-              {/* <span className="font-montserrat font-bold text-lg">
-                KB <br /> MS
-              </span> */}
-              <img src="/images/Logo.png" className="h-20 w-20 rounded-xl" />
+            <div className="bg-navy rounded-md px-5 py-2 text-white leading-tight font-montserrat font-bold text-xl">
+              KB <br /> MS
+              {/* <img src="/images/Logo.png" className="h-20 w-20 rounded-xl" /> */}
             </div>
             <div>
               <h1 className="font-montserrat font-bold text-xl text-navy leading-tight">
