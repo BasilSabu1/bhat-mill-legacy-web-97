@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -30,7 +30,7 @@ export default function ProductCategories() {
     } else {
       document.body.style.overflow = '';
     }
-  
+
     // Cleanup on unmount or modal close
     return () => {
       document.body.style.overflow = '';
@@ -307,7 +307,7 @@ export default function ProductCategories() {
     <section id="products" className="py-16 lg:py-24 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-5">
           <h2 className="font-montserrat font-bold text-3xl lg:text-4xl text-slate-800 mb-4">
             Product Categories
           </h2>
@@ -315,6 +315,14 @@ export default function ProductCategories() {
             Comprehensive range of industrial supplies from trusted brands. Add
             items to your enquiry cart for bulk quotations.
           </p>
+
+          {/* Call to Action */}
+          <div className="text-center mt-16">
+            <p className="font-open-sans font-bold text-slate-900 ">
+              Can't find what you're looking for? We stock over 100,000+
+              products.
+            </p>
+          </div>
 
           {/* Enquiry Cart Summary */}
           {getTotalItems() > 0 && (
@@ -431,20 +439,6 @@ export default function ProductCategories() {
               </Card>
             );
           })}
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <p className="font-open-sans text-slate-600 mb-6">
-            Can't find what you're looking for? We stock over 100,000+ products.
-          </p>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-slate-800 text-slate-800 hover:bg-slate-800 hover:text-white"
-          >
-            View Complete Catalog
-          </Button>
         </div>
       </div>
 
