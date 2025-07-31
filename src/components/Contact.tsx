@@ -1,8 +1,9 @@
-import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, MessageCircle, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
+import { FaDirections } from 'react-icons/fa';
 
 export const Contact = () => {
   const contactInfo = [
@@ -110,8 +111,7 @@ export const Contact = () => {
               </div>
             </div>
           </div>
-        
-         
+
           {/* Contact Form */}
           <div>
             <Card className="border-0 shadow-lg w-full">
@@ -120,7 +120,7 @@ export const Contact = () => {
                   Send us a Message
                 </h3>
 
-                <form className="space-y-4 md:space-y-6">
+                <div className="space-y-4 md:space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="font-open-sans text-xs md:text-sm font-medium text-industrial block mb-2">
@@ -186,13 +186,10 @@ export const Contact = () => {
                     />
                   </div>
 
-                  <Button
-                    type="submit"
-                    className="w-full bg-yellow hover:bg-yellow/90 text-navy font-montserrat font-semibold text-base md:text-lg py-3 h-auto"
-                  >
+                  <Button className="w-full bg-yellow hover:bg-yellow/90 text-navy font-montserrat font-semibold text-base md:text-lg py-3 h-auto">
                     Send Message
                   </Button>
-                </form>
+                </div>
 
                 <p className="font-open-sans text-xs text-industrial text-center mt-4">
                   * Required fields. We'll respond within 24 hours during
@@ -208,7 +205,67 @@ export const Contact = () => {
           <h3 className="font-montserrat font-semibold text-xl md:text-2xl text-navy mb-6 text-center">
             Find Us on Map
           </h3>
-          <div className="rounded-lg overflow-hidden">
+          <div className="relative rounded-lg overflow-hidden">
+            {/* Custom Address Box Overlay */}
+            <Card className="absolute top-2 left-1 z-10 border-0 shadow-lg bg-white w-full max-w-xs sm:max-w-sm md:w-1/2 lg:w-1/3">
+              <CardContent className="p-4">
+                <div className="flex items-start space-x-3">
+                  {/* <div className="b text-white p-2 rounded-full flex-shrink-0">
+                    <MapPin className="h-4 w-4" />
+                  </div> */}
+                  <div className="w-full">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <h4 className="font-montserrat font-semibold text-sm text-navy mb-1">
+                          Krishna Bhat Mill Stores
+                        </h4>
+                        <p className="font-open-sans text-xs text-industrial mb-2">
+                          Cloth Bazar Rd, Kochi, Kerala 682031
+                        </p>
+                      </div>
+                      <FaDirections className="text-3xl text-blue-800" />
+                    </div>
+                    <div className="flex items-center space-x-1 mb-2">
+                      <div className="flex items-center">
+                        <span className="font-semibold text-sm text-navy">
+                          4.0
+                        </span>
+                        <div className="flex ml-1">
+                          {[...Array(5)].map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`h-3 w-3 ${
+                                i < 4
+                                  ? 'text-[#FFD700] fill-current'
+                                  : i === 4
+                                  ? 'text-yellow-400 fill-current'
+                                  : 'text-gray-300'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      <span className="font-open-sans text-xs text-industrial">
+                        22 reviews
+                      </span>
+                    </div>
+                    <a
+                      href="https://www.google.com/maps/place/Krishna+Bhat+Mill+Stores/@9.9793129,76.2751960,17z/data=!3m1!4b1!4m6!3m5!1s0x3b080d005a3f3941:0xc96650c9bfc5878a!8m2!3d9.9793129!4d76.2777709!16s%2Fg%2F11dy8bs7ql?entry=ttu"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="text-xs border-navy text-navy hover:bg-navy hover:text-white"
+                      >
+                        Directions
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.453908885453!2d76.27519597479329!3d9.979312890125051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d005a3f3941%3A0xc96650c9bfc5878a!2sKrishna%20Bhat%20Mill%20Stores!5e0!3m2!1sen!2sin!4v1753439367219!5m2!1sen!2sin"
               width="100%"

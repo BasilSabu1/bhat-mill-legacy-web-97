@@ -1,12 +1,17 @@
-
 import { Award, Users, Clock, Shield } from 'lucide-react';
 
 export const About = () => {
   const timelineEvents = [
-    { year: '1946', event: 'Founded by Late Shri Krishna Bhat in Kochi' },
-    { year: '1965', event: 'Expanded to become Kerala\'s leading fastener supplier' },
+    { year: '1946', event: 'Founded by Late Anantha Krishna Bhat in Kochi' },
+    {
+      year: '1965',
+      event: "Expanded to become Kerala's leading fastener supplier",
+    },
     { year: '1985', event: 'Introduced automated inventory management' },
-    { year: '2000', event: 'Expanded product range to include valves and tools' },
+    {
+      year: '2000',
+      event: 'Expanded product range to include valves and tools',
+    },
     { year: '2015', event: 'Launched online catalog and digital ordering' },
     { year: '2024', event: 'Celebrating 78 years of industrial excellence' },
   ];
@@ -15,23 +20,27 @@ export const About = () => {
     {
       icon: Award,
       title: 'Quality Assurance',
-      description: 'Every product meets stringent quality standards with certified suppliers.'
+      description:
+        'Every product meets stringent quality standards with certified suppliers.',
     },
     {
       icon: Users,
       title: 'Expert Service',
-      description: 'Three generations of expertise in industrial supply solutions.'
+      description:
+        'Three generations of expertise in industrial supply solutions.',
     },
     {
       icon: Clock,
       title: 'Timely Delivery',
-      description: 'Reliable delivery schedules to keep your operations running.'
+      description:
+        'Reliable delivery schedules to keep your operations running.',
     },
     {
       icon: Shield,
       title: 'Trusted Partner',
-      description: '78 years of building lasting relationships with industries.'
-    }
+      description:
+        '78 years of building lasting relationships with industries.',
+    },
   ];
 
   return (
@@ -43,8 +52,9 @@ export const About = () => {
             Our Heritage & Values
           </h2>
           <p className="font-open-sans text-lg text-industrial max-w-2xl mx-auto">
-            From a small shop in 1946 to Kerala's most trusted industrial supplier, 
-            our journey is built on quality, reliability, and relationships.
+            From a small shop in 1946 to Kerala's most trusted industrial
+            supplier, our journey is built on quality, reliability, and
+            relationships.
           </p>
         </div>
 
@@ -56,25 +66,30 @@ export const About = () => {
             </h3>
             <div className="space-y-4 font-open-sans text-industrial leading-relaxed">
               <p>
-                Krishna Bhat Mill Stores began as a vision of Late Shri Krishna Bhat in 1946, 
-                starting with a modest collection of fasteners and hardware supplies in the 
-                heart of Kochi's commercial district.
+                Krishna Bhat Mill Stores began as a vision of Late Anantha
+                Krishna Bhat in 1946, starting with a modest collection of
+                fasteners and hardware supplies in the heart of Kochi's
+                commercial district.
               </p>
               <p>
-                Today, under the third generation of family leadership, we've grown to become 
-                Kerala's most comprehensive industrial supply house, serving industries from 
-                marine and construction to manufacturing and infrastructure.
+                Today, under the third generation of family leadership, we've
+                grown to become Kerala's most comprehensive industrial supply
+                house, serving industries from marine and construction to
+                manufacturing and infrastructure.
               </p>
               <p>
-                Our commitment remains unchanged: providing quality products, expert guidance, 
-                and reliable service that keeps Kerala's industries moving forward.
+                Our commitment remains unchanged: providing quality products,
+                expert guidance, and reliable service that keeps Kerala's
+                industries moving forward.
               </p>
             </div>
           </div>
 
           {/* Timeline */}
           <div className="bg-white p-8 rounded-lg shadow-lg">
-            <h4 className="font-montserrat font-semibold text-xl text-navy mb-6">Heritage Timeline</h4>
+            <h4 className="font-montserrat font-semibold text-xl text-navy mb-6">
+              Heritage Timeline
+            </h4>
             <div className="space-y-4">
               {timelineEvents.map((event, index) => (
                 <div key={index} className="flex items-start space-x-4">
